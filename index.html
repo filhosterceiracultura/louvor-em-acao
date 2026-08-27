@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#173c36" />
+    <meta name="description" content="Biblioteca pessoal de louvores, sem anúncios." />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icons/icon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Louvor em Ação</title>
+  </head>
+  <body>
+    <noscript>Este aplicativo precisa do JavaScript para funcionar.</noscript>
+    <main class="app-shell">
+      <header class="topbar">
+        <button class="brand" type="button" data-nav="library" aria-label="Ir para a biblioteca">
+          <img src="assets/logo.png" alt="Logo Louvor em Ação" />
+          <span><strong>Louvor</strong><small>em Ação</small></span>
+        </button>
+        <button id="installButton" class="icon-button hidden" aria-label="Instalar aplicativo">⇩</button>
+      </header>
+
+      <section id="view-library" class="view active" aria-labelledby="library-title">
+        <div class="hero">
+          <p class="eyebrow">Sua música, no seu ritmo</p>
+          <h1 id="library-title">Biblioteca</h1>
+          <p>Adicione seus áudios para ouvir sem anúncios e sem internet.</p>
+        </div>
+        <div class="quick-actions">
+          <label class="primary-button" for="audioPicker">+ Adicionar músicas</label>
+          <input id="audioPicker" type="file" accept="audio/mpeg,audio/mp4,audio/aac,audio/wav,audio/ogg,.mp3,.m4a,.aac,.wav,.ogg" multiple hidden />
+          <button class="secondary-button" data-nav="player">Tocar agora</button>
+        </div>
+        <div class="category-row" id="categoryRow" aria-label="Classificações"></div>
+        <div class="section-heading"><h2>Suas músicas</h2><span id="trackCount"></span></div>
+        <div id="trackList" class="track-list"></div>
+      </section>
+
+      <section id="view-player" class="view" aria-labelledby="player-title">
+        <div class="section-heading"><h1 id="player-title">Tocando agora</h1><button class="text-button" id="clearQueue">Limpar fila</button></div>
+        <div class="player-card">
+          <div id="nowCover" class="now-cover">♫</div>
+          <p class="eyebrow" id="nowCategory">Escolha músicas da Biblioteca</p>
+          <h2 id="nowTitle">Nenhuma música tocando</h2>
+          <p id="nowArtist">Sua fila aparecerá aqui.</p>
+          <audio id="audioPlayer" preload="metadata"></audio>
+          <input id="progress" class="progress" type="range" min="0" max="100" value="0" aria-label="Progresso da música" />
+          <div class="time-row"><span id="elapsed">0:00</span><span id="duration">0:00</span></div>
+          <div class="controls">
+            <button class="round-button" id="previousButton" aria-label="Anterior">‹‹</button>
+            <button class="play-button" id="playButton" aria-label="Tocar">▶</button>
+            <button class="round-button" id="nextButton" aria-label="Próxima">››</button>
+          </div>
+          <div class="mode-row">
+            <button id="shuffleButton" class="chip" aria-pressed="false">Aleatório</button>
+            <button id="repeatButton" class="chip" aria-pressed="false">Repetir lista</button>
+          </div>
+        </div>
+        <section class="timer-panel">
+          <h2>Temporizador</h2>
+          <div class="timer-options">
+            <button data-timer="30">30 min</button><button data-timer="60">1 hora</button><button data-timer="120">2 horas</button>
+          </div>
+          <div class="timer-custom"><input id="customMinutes" type="number" min="1" placeholder="Minutos" /><button id="setCustomTimer">Definir</button><button id="stopTimer">Sem tempo</button></div>
+          <p id="timerStatus" aria-live="polite">Sem temporizador.</p>
+        </section>
+        <section><div class="section-heading"><h2>Fila</h2><span id="queueCount"></span></div><div id="queueList" class="track-list compact"></div></section>
+      </section>
+
+      <section id="view-lyrics" class="view" aria-labelledby="lyrics-title">
+        <div class="hero"><p class="eyebrow">Conteúdo para acompanhar</p><h1 id="lyrics-title">Letras e cifras</h1><p>Abra uma música da Biblioteca e adicione a letra, a cifra ou uma imagem/PDF de cifra.</p></div>
+        <div id="lyricsList" class="track-list"></div>
+      </section>
+
+      <section id="view-recordings" class="view" aria-labelledby="recordings-title">
+        <div class="hero"><p class="eyebrow">Sua voz, suas lembranças</p><h1 id="recordings-title">Minhas gravações</h1><p>Grave cantos, ideias e mensagens. Elas ficam nesta área separada.</p></div>
+        <div class="record-box"><button id="recordButton" class="primary-button">● Começar gravação</button><span id="recordingStatus" aria-live="polite">Pronto para gravar.</span></div>
+        <div id="recordingsList" class="track-list"></div>
+      </section>
+
+      <section id="view-settings" class="view" aria-labelledby="settings-title">
+        <div class="hero"><p class="eyebrow">Cuide da sua biblioteca</p><h1 id="settings-title">Configurações</h1></div>
+        <div class="setting-card"><h2>Backup</h2><p>Salve uma cópia dos dados da Biblioteca antes de formatar o aparelho.</p><button id="exportBackup" class="secondary-button">Criar backup</button><label class="secondary-button" for="restorePicker">Restaurar backup</label><input id="restorePicker" type="file" accept="application/json,.json" hidden /></div>
+        <div class="setting-card"><h2>Trocar de aparelho</h2><p>Esta versão não usa nuvem nem gera custos. Para levar sua Biblioteca a outro aparelho, crie um backup completo aqui e restaure o arquivo no outro aparelho.</p></div>
+        <div class="setting-card"><h2>Armazenamento</h2><p id="storageStatus">Calculando espaço usado…</p></div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Navegação principal">
+      <button class="active" data-nav="library">Biblioteca</button><button data-nav="player">Tocar</button><button data-nav="lyrics">Letras</button><button data-nav="recordings">Gravações</button><button data-nav="settings">Ajustes</button>
+    </nav>
+
+    <dialog id="trackDialog"><form method="dialog" id="trackForm" class="dialog-content"><button class="close-button" value="cancel" aria-label="Fechar">×</button><h2>Editar música</h2><input type="hidden" id="editTrackId" /><label>Nome<input id="editTitle" required /></label><label>Artista<input id="editArtist" /></label><label>Categorias (separe por vírgula)<input id="editCategories" placeholder="Adoração, Oração e Relaxamento" /></label><label>Observação<textarea id="editNote" rows="3"></textarea></label><label>Letra<textarea id="editLyrics" rows="6"></textarea></label><label>Cifra escrita<textarea id="editChords" rows="5"></textarea></label><label>Imagem ou PDF da cifra<input id="chordAsset" type="file" accept="image/*,application/pdf" /></label><menu><button value="cancel" class="secondary-button">Cancelar</button><button id="saveTrack" value="default" class="primary-button">Salvar</button></menu></form></dialog>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js" type="module"></script>
+  </body>
+</html>

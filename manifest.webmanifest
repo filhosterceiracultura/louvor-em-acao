@@ -1,0 +1,10 @@
+{
+  "name": "Louvor em Ação",
+  "short_name": "Louvor",
+  "description": "Sua biblioteca pessoal de louvores, sem anúncios.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fbf8f0",
+  "theme_color": "#173c36",
+  "icons": [{"src":"icons/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
