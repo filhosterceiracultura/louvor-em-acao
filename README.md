@@ -1,4 +1,4 @@
-# Louvor em Ação — versão 1.4.0
+# Louvor em Ação — versão 1.5.0
 
 Aplicativo PWA pessoal para organizar e tocar músicas próprias sem anúncios.
 
@@ -20,6 +20,8 @@ Depois, abra `http://localhost:4173` no Chrome.
 - Cria fila, modo aleatório, repetição e temporizador.
 - O botão “Tocar agora” inicia a lista ou classificação aberta.
 - Os botões “Pausar” e “Parar” controlam a música diretamente na Biblioteca.
+- “Pausar” passa a “Continuar” e retoma a música do mesmo ponto.
+- Cada música pode ser excluída da Biblioteca após confirmação.
 - Grava áudio pelo microfone.
 - Cria e restaura backup completo no próprio aparelho.
 - É instalável como PWA.
