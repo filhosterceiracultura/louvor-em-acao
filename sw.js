@@ -1,4 +1,4 @@
-const CACHE='louvor-em-acao-v1-3';
+const CACHE='louvor-em-acao-v1-2';
 const ASSETS=['./','./index.html','./styles.css','./app.js','./manifest.webmanifest','./icons/icon.svg','./assets/logo.png'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS))));
 self.addEventListener('activate',event=>event.waitUntil(self.clients.claim()));
