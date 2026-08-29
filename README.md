@@ -1,4 +1,4 @@
-# Louvor em Ação — versão 1.5.0
+# Louvor em Ação — versão 1.6.0
 
 Aplicativo PWA pessoal para organizar e tocar músicas próprias sem anúncios.
 
@@ -25,6 +25,15 @@ Depois, abra `http://localhost:4173` no Chrome.
 - Grava áudio pelo microfone.
 - Cria e restaura backup completo no próprio aparelho.
 - É instalável como PWA.
+- Possui uma aba “Vídeos” para importar, assistir e excluir vídeos MP4 com letra.
+- Inclui os vídeos MP4 no backup completo e na restauração.
+
+## Vídeos MP4
+
+Os vídeos são guardados localmente no aparelho, dentro dos dados do aplicativo.
+Não há envio para a nuvem, anúncios ou cobrança. Como arquivos de vídeo ocupam
+mais espaço, o limite é o armazenamento livre do celular ou computador. Faça
+backup antes de trocar de aparelho ou limpar os dados do navegador.
 
 ## Sincronização
 

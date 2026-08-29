@@ -9,6 +9,7 @@
     <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="icons/icon.svg" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="videos.css" />
     <title>Louvor em Ação</title>
   </head>
   <body>
@@ -38,6 +39,13 @@
         <div class="category-row" id="categoryRow" aria-label="Classificações"></div>
         <div class="section-heading"><h2>Suas músicas</h2><span id="trackCount"></span></div>
         <div id="trackList" class="track-list"></div>
+      </section>
+
+      <section id="view-videos" class="view" aria-labelledby="videos-title">
+        <div class="hero"><p class="eyebrow">Ensaios e apresentações</p><h1 id="videos-title">Vídeos</h1><p>Guarde os vídeos MP4 com letra para acompanhar os louvores que serão cantados.</p></div>
+        <div class="quick-actions"><label class="primary-button" for="videoPicker">+ Adicionar vídeos MP4</label><input id="videoPicker" type="file" accept="video/mp4,.mp4" multiple hidden /></div>
+        <div class="section-heading"><h2>Seus vídeos</h2><span id="videoCount"></span></div>
+        <div id="videoList" class="track-list"></div>
       </section>
 
       <section id="view-player" class="view" aria-labelledby="player-title">
@@ -91,11 +99,11 @@
     </main>
 
     <nav class="bottom-nav" aria-label="Navegação principal">
-      <button class="active" data-nav="library">Biblioteca</button><button data-nav="player">Tocar</button><button data-nav="lyrics">Letras</button><button data-nav="recordings">Gravações</button><button data-nav="settings">Ajustes</button>
+      <button class="active" data-nav="library">Biblioteca</button><button data-nav="player">Tocar</button><button data-nav="videos">Vídeos</button><button data-nav="lyrics">Letras</button><button data-nav="recordings">Gravações</button><button data-nav="settings">Ajustes</button>
     </nav>
 
     <dialog id="trackDialog"><form method="dialog" id="trackForm" class="dialog-content"><button class="close-button" value="cancel" aria-label="Fechar">×</button><h2>Editar música</h2><input type="hidden" id="editTrackId" /><label>Nome<input id="editTitle" required /></label><label>Artista<input id="editArtist" /></label><label>Categorias (separe por vírgula)<input id="editCategories" placeholder="Adoração, Oração e Relaxamento" /></label><label>Observação<textarea id="editNote" rows="3"></textarea></label><label>Letra<textarea id="editLyrics" rows="6"></textarea></label><label>Cifra escrita<textarea id="editChords" rows="5"></textarea></label><label>Imagem ou PDF da cifra<input id="chordAsset" type="file" accept="image/*,application/pdf" /></label><menu><button value="cancel" class="secondary-button">Cancelar</button><button id="saveTrack" value="default" class="primary-button">Salvar</button></menu></form></dialog>
     <div id="toast" role="status" aria-live="polite"></div>
-    <script src="app.js?v=1.5.0" type="module"></script>
+    <script src="app.js?v=1.6.0" type="module"></script>
   </body>
 </html>
